@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería de Música</title>
+ <style>
+    body {
+        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 188, 212, 0.5);
+        font-size: 2.5rem;
+        position: relative;
+    }
+    
+    h1::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #00bcd4, #008ba3);
+        margin: 10px auto 0;
+        border-radius: 3px;
+    }
+    
+    .music-gallery {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(30, 30, 46, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #songList {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+        max-height: 500px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #00bcd4 #2a2a3c;
+    }
+    
+    #songList::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    #songList::-webkit-scrollbar-track {
+        background: #2a2a3c;
+        border-radius: 10px;
+    }
+    
+    #songList::-webkit-scrollbar-thumb {
+        background-color: #00bcd4;
+        border-radius: 10px;
+    }
+    
+    #songList li {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    #songList li:hover {
+        background: rgba(0, 188, 212, 0.15);
+        transform: translateX(5px);
+    }
+    
+    #songList li.active {
+        background: linear-gradient(90deg, #00bcd4, #008ba3);
+        color: #fff;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    }
+    
+    .player {
+        text-align: center;
+        padding: 20px;
+        background: rgba(42, 42, 60, 0.7);
+        border-radius: 12px;
+        margin-top: 20px;
+    }
+    
+    #currentSongInfo {
+        margin-top: 15px;
+        font-size: 1.2em;
+        color: #ffffff;
+        font-weight: 500;
+    }
+    
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .control-btn {
+        background: rgba(0, 188, 212, 0.2);
+        border: 2px solid #00bcd4;
+        color: #00bcd4;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+    }
+    
+    .control-btn:hover {
+        background: #00bcd4;
+        color: #fff;
+        transform: scale(1.1);
+    }
+    
+    .song-icon {
+        margin-right: 15px;
+        color: #00bcd4;
+        font-size: 1.2rem;
+    }
+    
+    @media (max-width: 768px) {
+        .music-gallery {
+            padding: 20px;
+            max-width: 95%;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+
+
+/* Estilos para el loader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color:teal; /* o el color que prefieras */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader-logo {
+            text-align: center;
+            font-size: 24px;
+            /* Personaliza el estilo del logo/texto como prefieras */
+        }
+        
+        /* Oculta el contenido principal inicialmente */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        /* Cuando el loader se oculta y muestra el contenido */
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .content-visible {
+            opacity: 1 !important;
+        }
+
+
+
+            /* Estilos modernos para el logo */
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .logo {
+            max-width: 450px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo-caption {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-volver {
+      color: white;
+      padding: 40px 40px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      animation: cambiarColor 6s infinite;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-volver:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes cambiarColor {
+      0%   { background-color: #3498db; } /* Azul */
+      25%  { background-color: #e74c3c; } /* Rojo */
+      50%  { background-color: #2ecc71; } /* Verde */
+      75%  { background-color: #7f8c8d; } /* Gris */
+      100% { background-color: #3498db; } /* Azul otra vez */
+    }
+</style>
+</head>
+<button class="btn-volver" onclick="location.href='index.html'">🔙 Volver a atras</button>
+<body>
+       <!-- Loader pantalla inicial con solo logo -->
+    <div id="loader">
+        <div class="loader-logo">
+    
+            <h5>Relajate con musica </h5>
+          
+           <img src="diegotourfoto4.png" width="450">
+        </div>
+    </div>
+
+  
+     <h2>
+            La naturaleza encuentra su equilibrio en la calma, asi la justicia se construye desde el respeto y la paz con la musica.
+           </h2> 
+  <h2> Esta lista de canciones está especialmente diseñada para ayudarte a encontrar paz y tranquilidad. Solo cierra los ojos y relaja tu mente, permitiendo que cada nota te guíe hacia un estado de calma y bienestar.</h2>
+
+            <div class="logo-container">
+            <img 
+                src="diegotourfoto4.png" alt="Logo de Diego Tour - Fotografía profesional" class="logo" width="450"height="auto" loading="lazy">
+            
+        </div>
+  <div class="music-gallery">
+    <ul id="songList">
+      <!-- Canciones cargadas con JS -->
+    </ul>
+
+    <div class="player">
+      <audio id="audioPlayer" controls>
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+      <div id="currentSongInfo"></div>
+    </div>
+  </div>
+
+  <script>
+    const songs = [
+      { title: "Energy", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-energy.mp3" },
+      { title: "Once Again", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-onceagain.mp3" },
+      { title: "Sunny", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-sunny.mp3" },
+      { title: "Going Higher", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-goinghigher.mp3" },
+      { title: "Creative Minds", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-creativeminds.mp3" },
+      { title: "Tenderness", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-tenderness.mp3" },
+      { title: "A New Beginning", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-anewbeginning.mp3" },
+      { title: "Love", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-love.mp3" },
+      { title: "Jazz Comedy", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-jazzcomedy.mp3" },
+      { title: "Funkyelement", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-funkyelement.mp3" },
+      { title: "Buddy", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-buddy.mp3" },
+      { title: "Cute", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-cute.mp3" },
+      { title: "Hey", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-hey.mp3" },
+      { title: "Ukulele", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-ukulele.mp3" },
+      { title: "Epic", artist: "Bensound", src: "https://www.bensound.com/bensound-music/bensound-epic.mp3" }
+    ];
+
+    const songListEl = document.getElementById("songList");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const currentSongInfo = document.getElementById("currentSongInfo");
+
+    function loadSongs() {
+      songs.forEach((song, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${song.title} - ${song.artist}`;
+        li.dataset.index = index;
+        li.addEventListener("click", () => {
+          playSong(index);
+        });
+        songListEl.appendChild(li);
+      });
+    }
+
+    function playSong(index) {
+      const song = songs[index];
+      audioPlayer.src = song.src;
+      audioPlayer.play();
+
+      currentSongInfo.textContent = `Reproduciendo: ${song.title} - ${song.artist}`;
+
+      // Actualizar clase active
+      Array.from(songListEl.children).forEach((li) => {
+        li.classList.remove("active");
+      });
+      songListEl.children[index].classList.add("active");
+    }
+
+    loadSongs();
+
+
+    
+         // Espera a que la página se cargue completamente
+        window.addEventListener('load', function() {
+            // Espera 1.5 segundos (1500ms) antes de ocultar el loader
+            setTimeout(function() {
+                var loader = document.getElementById('loader');
+                var mainContent = document.getElementById('main-content');
+                
+                // Oculta el loader
+                loader.classList.add('loader-hidden');
+                
+                // Muestra el contenido principal
+                mainContent.classList.add('content-visible');
+                
+                // Opcional: Elimina el loader del DOM después de la animación
+                loader.addEventListener('transitionend', function() {
+                    loader.remove();
+                });
+            }, 1500); // 1500 milisegundos = 1.5 segundos
+        });
+  </script>
+</body>
+</html>

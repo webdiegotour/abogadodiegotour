@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diego Tour - Abogado Corporativo especializado en derecho empresarial y protección de derechos. Consultoría legal personalizada.">
+    <meta name="keywords" content="abogado, derecho corporativo, asesoría legal, protección de derechos, Diego Tour">
+    <title>abogado diego Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Sistema de colores base */
+            --primary-1: #0A1A3A;     /* Azul Profundo */
+            --primary-2: #1E3A6E;     /* Azul Medio */
+            --primary-3: #3A5A8A;     /* Azul Claro */
+            --accent-1: #C9B18D;      /* Oro Clásico */
+            --accent-2: #D4A76A;      /* Oro Brillante */
+            --tech-1: #4D8BFF;        /* Azul Tecnológico */
+            --tech-2: #8A2BE2;        /* Púrpura IA */
+            --tech-3: #00C1D4;        /* Cian Digital */
+            --dark-1: #1A1A1A;        /* Negro Profundo */
+            --light-1: #F7FAFC;       /* Blanco Legal */
+            
+            /* Variables dinámicas */
+            --current-primary: var(--primary-1);
+            --current-accent: var(--accent-1);
+            --current-tech: var(--tech-1);
+            --current-bg: var(--light-1);
+            --current-text: var(--dark-1);
+            
+            /* Efectos 3D */
+            --gradient-primary: linear-gradient(135deg, var(--current-primary) 0%, var(--primary-3) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--current-accent) 0%, var(--accent-2) 100%);
+            --gradient-tech: linear-gradient(135deg, var(--current-tech) 0%, var(--tech-2) 100%);
+            --box-shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+            --box-shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            --transition-3d: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Reset 3D */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--current-text);
+            background-color: var(--current-bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: var(--transition-3d);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Sección principal con efectos 3D */
+        .attorney-hero {
+            position: relative;
+            padding: 8rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            transform-style: preserve-3d;
+        }
+
+        /* Galería de fotos */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow-3d);
+            transition: var(--transition-3d);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Información del abogado */
+        .attorney-info {
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--current-accent);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+
+        .attorney-name {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .attorney-title {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .attorney-bio {
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            max-width: 90%;
+            opacity: 0.9;
+            color: #FFFFFF;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition-3d);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--current-accent);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Selector de colores IA */
+        .color-selector {
+            margin-top: 4rem;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--box-shadow-inset);
+        }
+
+        .color-selector-title {
+            display: none;
+        }
+
+        .color-presets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .color-preset {
+            height: 60px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition-3d);
+            box-shadow: var(--box-shadow-3d);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .color-preset:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .color-preset::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 50%);
+        }
+
+        .preset-legal { background: linear-gradient(135deg, #0A1A3A 0%, #3A5A8A 100%); }
+        .preset-gold { background: linear-gradient(135deg, #C9B18D 0%, #D4A76A 100%); }
+        .preset-tech { background: linear-gradient(135deg, #4D8BFF 0%, #8A2BE2 100%); }
+        .preset-dark { background: linear-gradient(135deg, #1A1A1A 0%, #3A3A3A 100%); }
+        .preset-light { background: linear-gradient(135deg, #F7FAFC 0%, #E2E8F0 100%); }
+
+        /* Botones IA avanzados */
+        .ai-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .ai-button {
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: var(--transition-3d);
+            box-shadow: var(--box-shadow-3d);
+            position: relative;
+            overflow: hidden;
+            color: white;
+            z-index: 1;
+            min-height: 120px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .ai-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            z-index: -1;
+        }
+
+        .ai-button i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: var(--transition-3d);
+        }
+
+        .ai-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-button:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .button-analyze {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+        }
+
+        .button-transform {
+            background: linear-gradient(135deg, #4ECDC4 0%, #45B7D1 100%);
+        }
+
+        .button-generate {
+            background: linear-gradient(135deg, #A78BFA 0%, #7E5BEF 100%);
+        }
+        
+        .button-text-color {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+
+        /* Efectos de partículas IA */
+        .ai-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--current-tech);
+            filter: blur(5px);
+            animation: float 15s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translate(100px, -500px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-container {
+                gap: 3rem;
+            }
+            
+            .attorney-name {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .attorney-bio {
+                max-width: 100%;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .attorney-hero {
+                padding: 5rem 1.5rem;
+            }
+            
+            .attorney-name {
+                font-size: 2.5rem;
+            }
+            
+            .color-presets {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .ai-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .attorney-name {
+                font-size: 2rem;
+            }
+            
+            .color-presets {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .attorney-title {
+                font-size: 1.4rem;
+            }
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+   
+    <section class="attorney-hero">  
+        <!-- Efecto partículas IA -->
+        <div class="ai-particles" id="particles-js"></div>
+       
+        <div class="hero-container">
+            <div class="photo-gallery">
+                <img src="diegotourfoto1.jpeg" alt="Diego Tour - Abogado Corporativo" loading="lazy">
+                <img src="diegotourfoto2.jpg" alt="Diego Tour - Consultoría Legal" loading="lazy">
+            </div>
+
+            <div class="attorney-info">
+                <span class="section-subtitle">Abogado </span>
+                <h1 class="attorney-name">Diego Tour</h1>
+                
+                
+                <p class="attorney-bio">
+             Mi compromiso es proteger a mis clientes mediante la anticipación de riesgos y la creación de soluciones estratégicas, 
+             siempre con respeto y sin discriminación hacia nadie, incluyendo a los hombres heterosexuales. Protejo contra cualquier forma de violencia,
+              ya sea digital o física, especialmente cuando afecta a hombres inocentes frente a denuncias falsas. 
+              Reconozco que en algunas situaciones las mujeres pueden ser víctimas, pero el enfoque debe ser siempre equilibrado, 
+             respetando los derechos tanto de hombres como de mujeres.  </p>
+                 <p>
+                        Para más información o consultas, podés contactarme vía Facebook o Whatsapp.
+                    </p>
+                <div class="social-links">
+                   
+                    <a href="https://www.facebook.com/share/1ZH5r52uja/" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/5493624897362" class="social-link" aria-label="WhatsApp"><br><i class="fab fa-whatsapp"></i></a>
+                </div>
+               <button style="background-color: #007bff;color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;" onclick="window.location.href='index.html'">Volver atrás</button>
+                <!-- Selector de colores IA -->
+                <div class="color-selector">
+                    <div class="color-presets">
+                        <div class="color-preset preset-legal" data-theme="legal" aria-label="Tema Legal"></div>
+                        <div class="color-preset preset-gold" data-theme="gold" aria-label="Tema Dorado"></div>
+                        <div class="color-preset preset-tech" data-theme="tech" aria-label="Tema Tecnológico"></div>
+                        <div class="color-preset preset-dark" data-theme="dark" aria-label="Tema Oscuro"></div>
+                        <div class="color-preset preset-light" data-theme="light" aria-label="Tema Claro"></div>
+                    </div>
+                    
+                    <div class="ai-buttons">
+                        <button class="ai-button button-analyze" id="analyze-colors" aria-label="Analizar estilo">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>ANALIZAR ESTILO</span>
+                        </button>
+                        <button class="ai-button button-transform" id="transform-theme" aria-label="Cambiar tema">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>CAMBIAR TEMA</span>
+                        </button>
+                        <button class="ai-button button-generate" id="generate-palette" aria-label="Generar paleta aleatoria">
+                            <i class="fas fa-random"></i>
+                            <span>GENERAR ALEATORIO</span>
+                        </button>
+                        <button class="ai-button button-text-color" id="change-text-color" aria-label="Cambiar color de texto">
+                            <i class="fas fa-font"></i>
+                            <span>COLOR TEXTO</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sistema de cambio de temas
+        const themePresets = {
+            legal: {
+                primary: '#0A1A3A',
+                accent: '#C9B18D',
+                tech: '#4D8BFF',
+                bg: '#F7FAFC',
+                text: '#1A1A1A'
+            },
+            gold: {
+                primary: '#C9B18D',
+                accent: '#0A1A3A',
+                tech: '#8A2BE2',
+                bg: '#1A1A1A',
+                text: '#F7FAFC'
+            },
+            tech: {
+                primary: '#4D8BFF',
+                accent: '#8A2BE2',
+                tech: '#00C1D4',
+                bg: '#1A1A1A',
+                text: '#F7FAFC'
+            },
+            dark: {
+                primary: '#1A1A1A',
+                accent: '#4D8BFF',
+                tech: '#00C1D4',
+                bg: '#2D2D2D',
+                text: '#F7FAFC'
+            },
+            light: {
+                primary: '#F7FAFC',
+                accent: '#0A1A3A',
+                tech: '#8A2BE2',
+                bg: '#FFFFFF',
+                text: '#1A1A1A'
+            }
+        };
+
+        // Colores de texto alternativos
+        const textColors = [
+            '#1A1A1A', // Negro
+            '#FFFFFF', // Blanco
+            '#FF0000', // Rojo
+            '#00FF00', // Verde
+            '#0000FF', // Azul
+            '#FFFF00', // Amarillo
+            '#FF00FF', // Magenta
+            '#00FFFF', // Cian
+            '#800080', // Púrpura
+            '#FFA500'  // Naranja
+        ];
+
+        // Cambiar tema
+        document.querySelectorAll('.color-preset').forEach(preset => {
+            preset.addEventListener('click', function() {
+                const theme = this.dataset.theme;
+                applyTheme(theme);
+                animateThemeChange();
+                showNotification(`Tema cambiado a: ${this.getAttribute('aria-label')}`);
+            });
+        });
+
+        function applyTheme(theme) {
+            const colors = themePresets[theme];
+            document.documentElement.style.setProperty('--current-primary', colors.primary);
+            document.documentElement.style.setProperty('--current-accent', colors.accent);
+            document.documentElement.style.setProperty('--current-tech', colors.tech);
+            document.documentElement.style.setProperty('--current-bg', colors.bg);
+            document.documentElement.style.setProperty('--current-text', colors.text);
+            
+            // Actualizar partículas
+            updateParticles(colors.tech);
+        }
+
+        function animateThemeChange() {
+            document.body.style.animation = 'none';
+            void document.body.offsetWidth; // Trigger reflow
+            document.body.style.animation = 'themeChange 0.8s ease-out';
+        }
+
+        // Crear partículas IA
+        function createParticles() {
+            const container = document.getElementById('particles-js');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posición aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Tamaño aleatorio
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Animación única
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                particle.style.animation = `float ${duration}s infinite ${delay}s linear`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        function updateParticles(color) {
+            document.querySelectorAll('.particle').forEach(particle => {
+                particle.style.background = color;
+            });
+        }
+
+        // Mostrar notificación
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '10px';
+            notification.style.zIndex = '1000';
+            notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+            notification.style.transform = 'translateY(100px)';
+            notification.style.opacity = '0';
+            notification.style.transition = 'all 0.3s ease';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(0)';
+                notification.style.opacity = '1';
+            }, 10);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateY(100px)';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Botones IA
+        document.getElementById('analyze-colors').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-cog fa-spin"></i><span>ANALIZANDO...</span>';
+            
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check"></i><span>¡ESTILO OPTIMIZADO!</span>';
+                showNotification('Estilo visual analizado y optimizado');
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-chart-pie"></i><span>ANALIZAR ESTILO</span>';
+                }, 2000);
+            }, 1500);
+        });
+
+        document.getElementById('transform-theme').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-cog fa-spin"></i><span>CAMBIANDO...</span>';
+            
+            setTimeout(() => {
+                // Seleccionar un tema aleatorio diferente al actual
+                const themes = Object.keys(themePresets);
+                let randomTheme;
+                do {
+                    randomTheme = themes[Math.floor(Math.random() * themes.length)];
+                } while (randomTheme === currentTheme);
+                
+                applyTheme(randomTheme);
+                currentTheme = randomTheme;
+                
+                this.innerHTML = '<i class="fas fa-check"></i><span>¡TEMA CAMBIADO!</span>';
+                showNotification(`Tema cambiado a: ${randomTheme}`);
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-sync-alt"></i><span>CAMBIAR TEMA</span>';
+                }, 2000);
+            }, 1500);
+        });
+
+        document.getElementById('generate-palette').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-cog fa-spin"></i><span>GENERANDO...</span>';
+            
+            setTimeout(() => {
+                // Generar colores aleatorios armónicos
+                const hue = Math.floor(Math.random() * 360);
+                const primary = `hsl(${hue}, 70%, 20%)`;
+                const accent = `hsl(${(hue + 30) % 360}, 60%, 60%)`;
+                const tech = `hsl(${(hue + 180) % 360}, 80%, 60%)`;
+                const bg = `hsl(${hue}, 10%, 95%)`;
+                const text = `hsl(${hue}, 50%, 10%)`;
+                
+                document.documentElement.style.setProperty('--current-primary', primary);
+                document.documentElement.style.setProperty('--current-accent', accent);
+                document.documentElement.style.setProperty('--current-tech', tech);
+                document.documentElement.style.setProperty('--current-bg', bg);
+                document.documentElement.style.setProperty('--current-text', text);
+                
+                updateParticles(tech);
+                
+                this.innerHTML = '<i class="fas fa-check"></i><span>¡PALETA GENERADA!</span>';
+                showNotification('Nueva paleta de colores generada');
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-random"></i><span>GENERAR ALEATORIO</span>';
+                }, 2000);
+            }, 2000);
+        });
+        
+        // Botón para cambiar color del texto
+        document.getElementById('change-text-color').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-cog fa-spin"></i><span>CAMBIANDO...</span>';
+            
+            setTimeout(() => {
+                // Seleccionar un color de texto aleatorio diferente al actual
+                let randomColor;
+                const currentColor = getComputedStyle(document.documentElement).getPropertyValue('--current-text').trim();
+                
+                do {
+                    randomColor = textColors[Math.floor(Math.random() * textColors.length)];
+                } while (randomColor.toLowerCase() === currentColor.toLowerCase());
+                
+                document.documentElement.style.setProperty('--current-text', randomColor);
+                
+                this.innerHTML = '<i class="fas fa-check"></i><span>¡COLOR CAMBIADO!</span>';
+                showNotification(`Color de texto cambiado a: ${randomColor}`);
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-font"></i><span>COLOR TEXTO</span>';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Inicialización
+        let currentTheme = 'legal';
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            applyTheme(currentTheme);
+            
+            // Agregar animación de tema
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes themeChange {
+                    0% { opacity: 1; }
+                    30% { opacity: 0.8; }
+                    100% { opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Mejorar accesibilidad
+            document.querySelectorAll('[aria-label]').forEach(el => {
+                el.setAttribute('title', el.getAttribute('aria-label'));
+            });
+        });
+    </script>
+</body>
+</html>
